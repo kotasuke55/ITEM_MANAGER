@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,9 +27,12 @@ public class Item {
 
 	@Column(name = "PRICE")
 	private Integer price;
-	
+
 	@Column(name = "DELETED_AT")
 	private LocalDateTime deletedAt;
+
+	@Column(name = "CATEGORY_ID")
+    private Integer categoryId;
 
 	public Integer getId() {
 		return this.id;
@@ -52,12 +57,28 @@ public class Item {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-	
+
 	public LocalDateTime getDeletedAt() {
 		return this.deletedAt;
 	}
-	
+
 	public void setDeletedAt(LocalDateTime deletedAt) {
 		this.deletedAt = deletedAt;
 	}
+
+	public Integer getCategoryId() {
+        return this.categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", insertable = false, updatable = false)
+    private Category category;
+
+    public Category getCategory() {
+        return this.category;
+    }
 }
