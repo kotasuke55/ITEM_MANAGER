@@ -11,8 +11,8 @@
 <body>
     <header th:replace="~{layout/header :: header}"></header>
     <div class="main">
-        <div id="side-menu" th:replace="~{layout/sedeMenu :: sede-menu}">></div>
-        <div class="contens" th:insert="${contents}">></div>
+        <div id="side-menu" th:replace="~{layout/sideMenu :: side-menu}">></div>
+        <div class="contents" th:insert="${contents}">></div>
     </div>
 </body>
 
