@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +15,9 @@ import com.example.form.ItemForm;
 public class ItemController {
 
 	@GetMapping
-	public String index() {
-		return "/item/index";
-	}
+    public String index(Model model) {
+        return "item/index";
+    }
 
 	@GetMapping("toroku")
     public String torokuPage(@ModelAttribute("itemForm") ItemForm itemForm) {
