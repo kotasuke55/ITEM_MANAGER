@@ -84,6 +84,7 @@ public class Item {
     public void setStock(Integer stock) {
     	this.stock = stock;
     }
+ 
 
     @ManyToOne
     @JoinColumn(name = "category_id", insertable = false, updatable = false)
