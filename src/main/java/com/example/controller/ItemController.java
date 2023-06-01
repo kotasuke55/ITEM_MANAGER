@@ -53,15 +53,17 @@ public class ItemController {
     @GetMapping("henshu/{id}")
     public String henshuPage(@PathVariable("id") Integer id, Model model
                              , @ModelAttribute("itemForm") ItemForm itemForm) {
-        // 処理を追加
+       Item item = this.itemService.findById(id);
+       itemForm.setName(item.getName());
+       itemForm.setPrice(item.getPrice());
+       model.addAttribute("id", id);
         return "item/henshuPage";
     }
 
     // 商品編集の実行
     @PostMapping("henshu/{id}")
-    public String henshu(@PathVariable("id") Integer id, @ModelAttribute("itemForm") ItemForm itemForm) {
-        // 処理を追加
-
+    public String henshu(@PathVariable("id") Integer id, ItemForm itemForm) {
+        this.itemService.update(id, itemForm);
         return "redirect:/item";
     }
 
