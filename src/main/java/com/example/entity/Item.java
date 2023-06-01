@@ -32,7 +32,7 @@ public class Item {
 	private LocalDateTime deletedAt;
 
 	@Column(name = "CATEGORY_ID")
-	private Integer categoryId;
+    private Integer categoryId;
 
 	public Integer getId() {
 		return this.id;
@@ -67,18 +67,18 @@ public class Item {
 	}
 
 	public Integer getCategoryId() {
-		return this.categoryId;
-	}
+        return this.categoryId;
+    }
 
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
-	}
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
 
-	@ManyToOne
-	@JoinColumn(name = "category_id", insertable = false, updatable = false)
-	private Category category;
+    @ManyToOne
+    @JoinColumn(name = "category_id", insertable = false, updatable = false)
+    private Category category;
 
-	public Category getCategory() {
-		return this.category;
-	}
+    public Category getCategory() {
+        return this.category;
+    }
 }
