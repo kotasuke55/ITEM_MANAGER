@@ -14,38 +14,47 @@ import com.example.form.ItemForm;
 @RequestMapping("/item")
 public class ItemController {
 
-	@GetMapping
+    // 商品一覧の表示
+    @GetMapping
     public String index(Model model) {
         return "item/index";
     }
 
-	@GetMapping("toroku")
+    // 商品登録ページ表示用
+    @GetMapping("toroku")
     public String torokuPage(@ModelAttribute("itemForm") ItemForm itemForm) {
         // 処理を追加
         return "item/torokuPage";
     }
 
-	@PostMapping("toroku")
-	public String toroku(ItemForm itemForm) {
-		// 処理を追加
-		return "redirect:/item";
-	}
+    // 商品登録の実行
+    @PostMapping("toroku")
+    public String toroku(ItemForm itemForm) {
+        // 処理を追加
+        return "redirect:/item";
+    }
 
-	@GetMapping("henshu/{id}")
-	public String henshuPage(@PathVariable Integer id, @ModelAttribute("ItemForm") ItemForm itemForm) {
-		// 処理を追加
-		return "item/henshuPage";
-	}
+    // 商品編集ページ
+    @GetMapping("henshu/{id}")
+    public String henshuPage(@PathVariable("id") Integer id, Model model
+                             , @ModelAttribute("itemForm") ItemForm itemForm) {
+        // 処理を追加
+        return "item/henshuPage";
+    }
 
-	@PostMapping("henshu/{id}")
-	public String henshu(@PathVariable Integer id, @ModelAttribute("ItemForm") ItemForm itemForm) {
-		// 処理を追加
-		return "redirect:item";
-	}
+    // 商品編集の実行
+    @PostMapping("henshu/{id}")
+    public String henshu(@PathVariable("id") Integer id, @ModelAttribute("itemForm") ItemForm itemForm) {
+        // 処理を追加
 
-	@PostMapping("sakujo/{id}")
-	public String sakufo(@PathVariable Integer id) {
-		// 処理を追加
-		return "redirect:item";
-	}
+        return "redirect:/item";
+    }
+
+    // 商品削除の実行
+    @PostMapping("sakujo/{id}")
+    public String sakujo(@PathVariable("id") Integer id) {
+        // 処理を追加
+        return "redirect:/item";
+    }
+
 }
