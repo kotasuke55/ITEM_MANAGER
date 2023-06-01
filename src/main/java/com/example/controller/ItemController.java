@@ -70,7 +70,7 @@ public class ItemController {
     // 商品削除の実行
     @PostMapping("sakujo/{id}")
     public String sakujo(@PathVariable("id") Integer id) {
-        // 処理を追加
+        this.itemService.delete(id);
         return "redirect:/item";
     }
 

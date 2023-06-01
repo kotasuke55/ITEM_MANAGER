@@ -44,4 +44,8 @@ public class ItemService {
 	    item.setPrice(itemForm.getPrice());
 	    return this.itemRepository.save(item);
 	}
+	
+	public void delete(Integer id) {
+		this.itemRepository.deleteById(id);
+	}
 }
