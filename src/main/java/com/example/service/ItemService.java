@@ -20,6 +20,10 @@ public class ItemService {
 	public ItemService(ItemRepository itemRepository) {
 		this.itemRepository = itemRepository;
 	}
+	
+	public List<Item> findByDeletedAtIsNull() {
+		return this.itemRepository.findByDeletedAtIsNull();
+	}
 
 	public List<Item> findAll(){
 		return this.itemRepository.findAll();
