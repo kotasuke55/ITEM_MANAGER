@@ -21,7 +21,7 @@ public class ItemService {
 	public ItemService(ItemRepository itemRepository) {
 		this.itemRepository = itemRepository;
 	}
-	
+
 	public List<Item> findByDeletedAtIsNull() {
 		return this.itemRepository.findByDeletedAtIsNull();
 	}
@@ -49,7 +49,7 @@ public class ItemService {
 	    item.setPrice(itemForm.getPrice());
 	    return this.itemRepository.save(item);
 	}
-	
+
 	public Item delete(Integer id) {
 		Item item = this.findById(id);
 		item.setDeletedAt(LocalDateTime.now());
