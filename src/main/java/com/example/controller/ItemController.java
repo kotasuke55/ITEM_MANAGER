@@ -61,6 +61,9 @@ public class ItemController {
        Item item = this.itemService.findById(id);
        itemForm.setName(item.getName());
        itemForm.setPrice(item.getPrice());
+       itemForm.setCategoryId(item.getCategoryId());
+       List<Category> categories = this.categoryService.findAll();
+       model.addAttribute("categories", categories);
        model.addAttribute("id", id);
         return "item/henshuPage";
     }
