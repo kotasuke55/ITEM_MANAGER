@@ -86,12 +86,14 @@ public class ItemController {
     // 在庫入荷の実行	送信ボタンのname属性が in の場合は入荷処理の実行
     @PostMapping(path = "stock/{id}", params = "in")
     public String nyuka(@PathVariable("id") Integer id, @RequestParam("stock") Integer inputValue) {
-    	return "";
+    	this.itemService.nyuka(id, inputValue);
+    	return "redirect:/item";
     }
 
     // 在庫出荷の実行	送信ボタンのname属性が out の場合は出荷処理の実行
     @PostMapping(path = "stock/{id}", params = "out")
     public String shukka(@PathVariable("id") Integer id, @RequestParam("stock") Integer inputValue) {
-    	return "";
+    	this.itemService.shukka(id, inputValue);
+    	return "redirect:/item";
     }
 }
