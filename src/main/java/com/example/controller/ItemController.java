@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.entity.Category;
 import com.example.entity.Item;
 import com.example.form.ItemForm;
+import com.example.service.CategoryService;
 import com.example.service.ItemService;
 
 
@@ -21,10 +23,12 @@ import com.example.service.ItemService;
 public class ItemController {
 
 	private final ItemService itemService;
+	private final CategoryService categoryService;
 
 	@Autowired
-	public ItemController(ItemService itemService) {
+	public ItemController(ItemService itemService, CategoryService categoryService) {
 		this.itemService = itemService;
+		this.categoryService = categoryService;
 	}
 
     // 商品一覧の表示
@@ -37,8 +41,9 @@ public class ItemController {
 
     // 商品登録ページ表示用
     @GetMapping("toroku")
-    public String torokuPage(@ModelAttribute("itemForm") ItemForm itemForm) {
-        // 処理を追加
+    public String torokuPage(@ModelAttribute("itemForm") ItemForm itemForm, Model model) {
+        List<Category> categories = this.categoryService.findAll();
+        model.addAttribute("categories", categories);
         return "item/torokuPage";
     }
 

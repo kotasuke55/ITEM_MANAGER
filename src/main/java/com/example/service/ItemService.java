@@ -34,6 +34,7 @@ public class ItemService {
 		Item item = new Item();
 		item.setName(itemForm.getName());
 		item.setPrice(itemForm.getPrice());
+		item.setCategoryId(itemForm.getCategoryId());
 		return this.itemRepository.save(item);
 	}
 
